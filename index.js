@@ -1,0 +1,74 @@
+const express = require("express");
+
+const { MongoClient, ObjectId } = require("mongodb");
+require("dotenv").config();
+
+const app = express();
+app.use(express.json());
+const PORT = 3000;
+const client = new MongoClient(process.env.MONGODB_URI);
+const database = client.db("courseflow");
+const coursesCollection = database.collection("courses");
+async function connectToDatabase() {
+    try {
+        await client.connect();
+       console.log("Connected to MongoDB!"); 
+    } catch (error) {
+        console.error("MongoDB connection failed:", error);
+    }
+}
+
+connectToDatabase();
+
+app.use(express.static("public"));
+
+app.get("/api/courses", async (req, res) => {
+    const courses = await coursesCollection.find().toArray();
+
+    res.json(courses);
+});
+
+app.post("/api/courses", async (req, res) => {
+    const course = req.body;
+    const result = await coursesCollection.insertOne(course);
+
+    res.json({
+    message: "Course received successfully",
+    course: {
+        ...course,
+        _id: result.insertedId
+    }
+});
+});
+
+app.put("/api/courses/:id", async (req, res) => {
+    const courseId = req.params.id;
+    const updatedCourse = req.body;
+
+    const result = await coursesCollection.updateOne(
+        { _id: new ObjectId(courseId) },
+        { $set: updatedCourse }
+    );
+
+    res.json({
+        message: "Course updated successfully",
+        modifiedCount: result.modifiedCount
+    });
+});
+
+app.delete("/api/courses/:id", async (req, res) => {
+const courseId = req.params.id;
+
+const result = await coursesCollection.deleteOne({
+    _id: new ObjectId(courseId)
+});
+
+res.json({
+    message: "Course deleted successfully",
+    deletedCount: result.deletedCount
+});
+});
+
+app.listen(PORT, () => {
+    console.log(`CourseFlow server running on port ${PORT}`);
+});
