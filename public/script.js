@@ -6,6 +6,7 @@ const courseNameInput = document.getElementById("course-name");
 const courseCreditsInput = document.getElementById("course-credits");
 const courseStatusInput = document.getElementById("course-status");
 const courseList = document.getElementById("course-list");
+const courseSearchInput = document.getElementById("course-search");
 
 const totalCourses = document.getElementById("total-courses");
 const totalCredits = document.getElementById("total-credits");
@@ -162,3 +163,19 @@ courseCard.querySelectorAll("p")[1].textContent =
             courseList.appendChild(courseCard);
         });
     });
+
+    courseSearchInput.addEventListener("input", () => {
+    const searchTerm = courseSearchInput.value.toLowerCase();
+
+    const courseCards = document.querySelectorAll(".course-card");
+
+    courseCards.forEach(courseCard => {
+        const courseText = courseCard.textContent.toLowerCase();
+
+        if (courseText.includes(searchTerm)) {
+            courseCard.style.display = "block";
+        } else {
+            courseCard.style.display = "none";
+        }
+    });
+});
