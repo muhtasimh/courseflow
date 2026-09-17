@@ -7,18 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>CourseFlow</h1>
-    <p>Plan your semester. Stay on track.</p>
+    <main>
+        <h1>CourseFlow</h1>
+        <p>Plan your semester. Stay on track.</p>
 
-    <button id="add-course-btn">Add Course</button>
+        <button id="add-course-btn">Add Course</button>
 
-<div id="course-form" style="display: none;">
-    <input id="course-code" type="text" placeholder="Course code">
-    <input id="course-name" type="text" placeholder="Course name">
-    <button id="save-course-btn">Save Course</button>
+        <div id="course-form" style="display: none;">
+            <input id="course-code" type="text" placeholder="Course code">
+            <input id="course-name" type="text" placeholder="Course name">
+            <input id="course-credits" type="number" min="1" max="12" value="3" placeholder="Credits">
+
+<select id="course-status">
+    <option value="Planned">Planned</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Completed">Completed</option>
+</select>
+            <button id="save-course-btn">Save Course</button>
+        </div>
+
+        <div id="semester-summary">
+    <span id="total-courses">0 courses</span>
+    <span id="total-credits">0 credits</span>
+    <span id="completed-credits">0 completed</span>
 </div>
 
-<div id="course-list"></div>
+        <div id="course-list"></div>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
