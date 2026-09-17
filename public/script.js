@@ -107,7 +107,7 @@ fetch("/api/courses")
             courseCard.innerHTML = `
     <h2>${course.code}</h2>
     <p>${course.name}</p>
-    <p>${course.credits ?? 3} credits • ${course.status ?? "Planned"}</p>
+    <p>${course.credits ?? 3} credits • <span class="status-badge">${course.status ?? "Planned"}</span></p>
     <button class="edit-btn">Edit</button>
     <button class="delete-btn">Delete</button>
     `;
