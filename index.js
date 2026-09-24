@@ -20,7 +20,7 @@ async function connectToDatabase() {
 
 connectToDatabase();
 
-app.use(express.static("public"));
+app.use(express.static("client/dist"));
 
 app.get("/api/courses", async (req, res) => {
     const courses = await coursesCollection.find().toArray();
@@ -67,6 +67,10 @@ res.json({
     message: "Course deleted successfully",
     deletedCount: result.deletedCount
 });
+});
+
+app.get("/{*splat}", (req, res) => {
+    res.sendFile("index.html", { root: "client/dist" });
 });
 
 if (require.main === module) {

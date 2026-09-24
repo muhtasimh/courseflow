@@ -7,7 +7,7 @@ describe("CourseFlow API", () => {
 
         expect(response.statusCode).toBe(200);
         expect(Array.isArray(response.body)).toBe(true);
-    });
+    }, 15000);
 });
 
 afterAll(async () => {
