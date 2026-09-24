@@ -4,6 +4,18 @@ CourseFlow is a full-stack semester planning application for managing courses an
 
 The application uses a React frontend, an Express REST API, and MongoDB for persistent course storage.
 
+## Live Demo
+
+CourseFlow is deployed on Microsoft Azure App Service with MongoDB Atlas for persistent cloud data storage.
+
+## Engineering
+
+- Automated API testing with Jest and Supertest
+- Continuous integration with GitHub Actions
+- Automated deployment to Microsoft Azure App Service
+- Production frontend build with Vite
+- MongoDB Atlas cloud database integration
+
 ## Features
 
 - Add, edit, and delete courses
