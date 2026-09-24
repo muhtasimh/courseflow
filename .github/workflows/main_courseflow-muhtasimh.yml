@@ -12,6 +12,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+
+    permissions:
+      contents: read #This is required for actions/checkout
+      
     permissions:
       contents: read #This is required for actions/checkout
 
