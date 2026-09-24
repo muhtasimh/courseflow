@@ -14,6 +14,8 @@ The application uses a React frontend, an Express REST API, and MongoDB for pers
 - Persistent course storage with MongoDB
 - Responsive user interface
 - Form validation and API error handling
+- Automated API tests covering course retrieval, creation, updates, deletion, and MongoDB persistence
+- GitHub Actions CI workflow that automatically runs the test suite on pushes and pull requests
 
 ## Tech Stack
 
@@ -32,6 +34,9 @@ The application uses a React frontend, an Express REST API, and MongoDB for pers
 ### Development
 - Git
 - GitHub
+- Jest
+- Supertest
+- GitHub Actions
 - REST API architecture
 
 ## Architecture
