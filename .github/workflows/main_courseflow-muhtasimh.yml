@@ -27,11 +27,16 @@ jobs:
         with:
           node-version: '24.x'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install backend dependencies and test
+  run: |
+    npm install
+    npm test
+
+- name: Build React frontend
+  run: |
+    cd client
+    npm install
+    npm run build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
